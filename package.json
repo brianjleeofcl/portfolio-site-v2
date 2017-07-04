@@ -1,5 +1,10 @@
 {
   "dependencies": {
     "@types/jquery": "^3.2.5"
+  },
+  "devDependencies": {
+    "browserify": "^14.4.0",
+    "tsify": "^3.0.1",
+    "typescript": "^2.4.1"
   }
 }
