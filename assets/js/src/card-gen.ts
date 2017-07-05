@@ -1,7 +1,7 @@
 class CardImg {
   public img: JQuery<HTMLImageElement>
   constructor(src: string, alt: string){
-    this.img = $('<img>').prop({src, alt}).addClass('card-img-top') as JQuery<HTMLImageElement>
+    this.img = $('<img>').prop({src, alt}).addClass('card-img-top img-fluid') as JQuery<HTMLImageElement>
   }
 }
 
@@ -38,14 +38,14 @@ export class Card {
   }
 
   private initimg(title: string, desc: string, url:URLs, img: string): JQuery<HTMLDivElement> {
-    const $card: JQuery<HTMLDivElement> = $('<div>').addClass('card') as JQuery<HTMLDivElement>
+    const $card: JQuery<HTMLDivElement> = $('<div>').addClass('card mb-3') as JQuery<HTMLDivElement>
     const $image: JQuery<HTMLImageElement> = new CardImg(img, `${title} image`).img
     const $block: JQuery<HTMLDivElement> = new CardBlock(title, desc, url.github).div
     const $footer: JQuery<HTMLDivElement> = new CardFooter(url.site).div
     return $card.append($image, $block, $footer)
   }
   private init(title: string, desc: string, url: URLs): JQuery<HTMLDivElement> {
-    const $card: JQuery<HTMLDivElement> = $('<div>').addClass('card') as JQuery<HTMLDivElement>
+    const $card: JQuery<HTMLDivElement> = $('<div>').addClass('card mb-3') as JQuery<HTMLDivElement>
     const $block: JQuery<HTMLDivElement> = new CardBlock(title, desc, url.github).div
     const $footer: JQuery<HTMLDivElement> = new CardFooter(url.site).div
     return $card.append($block, $footer)

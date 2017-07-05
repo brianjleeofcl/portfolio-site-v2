@@ -7,7 +7,12 @@ interface Project {
   img?: string
 }
 
-const projects: Project[] = [{title: 'Sample', desc: 'Sample', url: {github: '', site: ''}, img: 'https://www.placecage.com/c/300/300'}]
 const $projects: JQuery<HTMLElement> = $('#projects-container');
 
-$projects.append(...projects.map(({title, desc, url, img}) => new Card(title, desc, url, img).div))
+$.ajax('http://api.brianjlee.net/v1/projects/', {
+  method: 'GET'
+}).then(data => {
+  const projects: Project[] = data
+
+  $projects.append(...projects.map(({title, desc, url, img}) => new Card(title, desc, url, img).div))
+})
