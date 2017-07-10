@@ -6,7 +6,8 @@
 
 #medium-iframe {
   border: 2px solid #292b2c;
-  height: 80vh;
-  width: 80%;
+  display: block;
   margin: 0 auto;
+  height: 80vh;
+  width: 90%;
 }
