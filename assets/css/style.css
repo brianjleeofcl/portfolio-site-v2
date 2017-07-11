@@ -9,13 +9,18 @@
   display: block;
   margin: 0 auto;
   height: 80vh;
-  width: 90%;
+  width: 95%;
 }
 
-.btn {
+.contact-modal-loader {
   cursor: pointer;
 }
 
 .loader {
   display: block;
+}
+
+.LI-profile-badge{
+  width: 250px;
+  margin: 0 auto;
 }

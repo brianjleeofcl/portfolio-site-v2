@@ -21,6 +21,9 @@
     <script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
     <!-- Bundled JS -->
     <script defer src="/assets/js/index.js"></script>
+
+    <!-- LinkedIn -->
+    <script defer type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
   </head>
   <body>
     <nav class="navbar fixed-top navbar-toggleable-md navbar-inverse bg-inverse">
@@ -61,27 +64,25 @@
       </div>
     </header>
     <main class="container">
-      <section class="row">
-        <section class="col-12 col-md-6" id="projects-container">
+      <section class="row no-gutters">
+        <section class="col-12 col-lg-5">
           <h3 class="text-center">Projects</h3>
           <object data="/assets/img/loading.svg" class="loader mx-auto"></object>
+          <div id="projects-container" class="d-flex flex-wrap">
+            
+          </div>
         </section>
-        <section class="col-12 col-md-6">
+        <section class="col-12 col-md-6 col-lg-4">
           <h3 class="text-center">Blog (Medium)</h3>
           <iframe id="medium-iframe"
           <!--src="http://api.brianjlee.net/v1/medium/@brianjleeofcl"-->
           alt="Medium"></iframe>
         </section>
-      </section>
-      <section class="row">
-        <section class="col-12">
+        <section class="col-12 col-md-6 col-lg-3">
           <h3 class="text-center">Contact</h3>
-          <button class="btn btn-primary contact-modal-loader" id="contact-modal-btn" data-toggle="modal" data-target="#contact-modal">Contact me!</button>
+          <button class="btn btn-primary btn-block contact-modal-loader" id="contact-modal-btn" data-toggle="modal" data-target="#contact-modal">Message me!</button>
           <div id="contact-modal" class="modal"></div>
-        </section>
-        <section class="col-12">
-          <script src="//platform.linkedin.com/in.js" type="text/javascript"></script>
-          <script type="IN/MemberProfile" data-id="https://www.linkedin.com/in/brianjleeofcl" data-format="inline" data-related="false"></script>
+          <div class="LI-profile-badge mt-3 mx-auto"  data-version="v1" data-size="medium" data-locale="en_US" data-type="vertical" data-theme="light" data-vanity="brianjleeofcl"><a class="LI-simple-link" href='https://www.linkedin.com/in/brianjleeofcl?trk=profile-badge'>Brian Lee</a></div>
         </section>
       </section>
     </main>

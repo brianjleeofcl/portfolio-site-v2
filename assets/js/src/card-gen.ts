@@ -34,7 +34,8 @@ export class Card {
   public div: JQuery<HTMLDivElement>
   
   constructor(title: string, desc: string, url: URLs, img? : string) {
-    this.div = img ? this.initimg(title, desc, url, img) : this.init(title, desc, url) 
+    const $card = img ? this.initimg(title, desc, url, img) : this.init(title, desc, url) 
+    this.div = $('<div>').addClass('col-6').append($card) as JQuery<HTMLDivElement>
   }
 
   private initimg(title: string, desc: string, url:URLs, img: string): JQuery<HTMLDivElement> {
