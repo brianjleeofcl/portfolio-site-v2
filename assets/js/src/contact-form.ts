@@ -1,15 +1,15 @@
 const message = 'message';
 
 class FormGroup {
-  public div: JQuery<HTMLElement>
+  public field: JQuery<HTMLElement>
   private input: JQuery<HTMLElement>
   constructor(type: string, label: string) {
-    const $input = type === message ? $('<textarea>') : $('<input>').attr({type});
+    const $input = type === message ? $('<textarea>').attr('rows', '3') : $('<input>').attr({type});
     this.input = $input
     $input.addClass('form-control')
     const $label = $('<label>').text(label)
-    const $div = $('<div>').addClass('form-group').append($label, $input)
-    this.div = $div
+    const $fs = $('<fieldset>').addClass('form-group').append($label, $input)
+    this.field = $fs
   }
 
   get data(): string {
@@ -44,7 +44,7 @@ export class Contact {
 
   constructor() {
     this.form = new Form()
-    const $form = $('<form>').append(this.form.name.div, this.form.email.div, this.form.message.div)
+    const $form = $('<form>').append(this.form.name.field, this.form.email.field, this.form.message.field)
     this.formElement = $form
     this.button = new SubmitBtn(this.submit).btn
   }
