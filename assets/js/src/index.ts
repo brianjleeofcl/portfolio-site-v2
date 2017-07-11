@@ -1,5 +1,6 @@
 import { URLs, Card } from './card-gen';
 import { Modal } from './modal-gen';
+import { Contact } from './contact-form';
 
 interface Project {
   title: string
@@ -20,11 +21,12 @@ $.ajax('http://api.brianjlee.net/v1/projects/', {
   $projects.append(...projects.map(({title, desc, url, img}) => new Card(title, desc, url, img).div));
 })
 
-const $contactModalBtn: JQuery<HTMLElement> = $('#contact-modal-btn')
+const $contactModalBtn: JQuery<HTMLElement> = $('.contact-modal-loader')
 const $contactModal: JQuery<HTMLElement> = $('#contact-modal')
 
 $contactModalBtn.on('click', () => {
-  const $modal = new Modal('Message', [], []).modal;
+  const $contactForm = new Contact();
+  const $modal = new Modal('Message', [$contactForm.formElement], [$contactForm.button]).modal;
   $contactModal.empty()
   $contactModal.append($modal)
 })
