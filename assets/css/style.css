@@ -8,7 +8,8 @@
   border: 2px solid #292b2c;
   display: block;
   margin: 0 auto;
-  height: 80vh;
+  max-height: 95vh;
+  height: 100%;
   width: 95%;
 }
 
