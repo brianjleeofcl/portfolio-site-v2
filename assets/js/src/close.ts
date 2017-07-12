@@ -1,10 +1,18 @@
-const $button = $('<button>').addClass('close').attr({'data-dismiss': 'modal', type: 'button', 'aria-label': 'close'});
-const $span = $('<span>').html('&times;').prop('aria-hidden', true);
+import { Button } from './button';
 
-export class CloseIcon {
-  public btn: JQuery<HTMLButtonElement> = $button.append($span) as JQuery<HTMLButtonElement>;
+export class CloseIcon extends Button {
+  public btn: JQuery<HTMLButtonElement>
+  
+  constructor() {
+    super($('<span>').html('&times;').prop('aria-hidden', true))
+    this.btn.addClass('close btn').attr({'data-dismiss': 'modal', type: 'button', 'aria-label': 'close'})
+  }
 }
 
-export class CloseBtn {
-  public btn: JQuery<HTMLButtonElement> = $button.text('close') as JQuery<HTMLButtonElement>;
+export class CloseBtn extends Button {
+  public btn: JQuery<HTMLButtonElement>;
+  constructor() {
+    super('close')
+    this.btn.addClass('close btn').attr({'data-dismiss': 'modal', type: 'button', 'aria-label': 'close'})
+  }
 }
