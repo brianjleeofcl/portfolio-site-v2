@@ -2,6 +2,7 @@ import { URLs, Card } from './card-gen';
 import { Modal } from './modal-gen';
 import { Contact } from './contact-form';
 import { Btn } from './button';
+import { CloseBtn } from './close';
 
 interface Project {
   title: string
@@ -28,14 +29,32 @@ const $contactModal: JQuery<HTMLElement> = $('#contact-modal')
 $contactModalBtn.on('click', () => {
   const $contactForm = new Contact();
   const $modal = new Modal('Message', [$contactForm.formElement], [$contactForm.button]).modal;
+  let $form: JQuery<HTMLFormElement>;
   $contactForm.on('POST_SENT', () => {
-    $('div.modal-body').empty().append($('<object>').attr({data: '/assets/img/loading.svg'}).addClass('loader mx-auto'))
-    const $sendingBtn = new Btn('Sending...')
-    $('div.modal-footer').empty().append($sendingBtn.btn.prop('disabled', true).addClass('mx-auto'))
+    $form = $('div.modal-body').detach() as JQuery<HTMLFormElement>
+    $('div.modal-body').append(
+      $('<object>').attr({data: '/assets/img/loading.svg'}).addClass('loader mx-auto')
+    )
+    $('div.modal-footer').empty().append(
+      (new Btn('Sending...')).btn.prop('disabled', true).addClass('mx-auto')
+    )
   })
-  $contactForm.on('POST_SUCCESS', () => {
-    const $modalBody = $('div.modal-body')
-    $modalBody
+  .on('POST_SUCCESS', () => {
+    $('h5.modal-title').text('Success!')
+    $('div.modal-body').empty().append(
+      $('<p>').text('Thanks for the message, I will get back to you shortly.'),
+      $('<p>').text('– Brian').addClass('align-right')
+    )
+    $('div.modal-footer').empty().append((new CloseBtn()).btn)
+  })
+  .on('POST_FAILURE', () => {
+    $('h5.modal-title').text('Error')
+    $('div.modal-body').empty().append(
+      $('<p>').text('.'),
+      $('<p>').text('– Brian').addClass('align-right')
+    )
+    $('div.modal-footer').empty().append((new CloseBtn()).btn)
+
   })
   $contactModal.empty().append($modal)
 })

@@ -13,6 +13,6 @@ export class CloseBtn extends Btn {
   public btn: JQuery<HTMLButtonElement>;
   constructor() {
     super('close')
-    this.btn.addClass('close').attr({'data-dismiss': 'modal', type: 'button', 'aria-label': 'close'})
+    this.btn.addClass('btn-secondary').attr({'data-dismiss': 'modal', type: 'button', 'aria-label': 'close'})
   }
 }

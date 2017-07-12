@@ -1,4 +1,5 @@
 import { CloseIcon } from './close';
+
 class ModalHeader {
   public div: JQuery<HTMLDivElement>;
   constructor(title: string) {

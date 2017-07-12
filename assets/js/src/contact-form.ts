@@ -58,12 +58,13 @@ export class Contact {
     this.eventRecord = {};
   }
 
-  public on(event: string, fn: (...data: any[]) => void ) {
+  public on(event: string, fn: (...data: any[]) => void ): this {
     if (this.eventRecord[event]) this.eventRecord[event].push(fn)
     else this.eventRecord[event] = [fn]
+    return this
   }
 
-  private emit(event: string, ...data: any[]) {
+  private emit(event: string, ...data: any[]): void {
     for (let fn of this.eventRecord[event]) fn(...data)
   }
 
