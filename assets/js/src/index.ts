@@ -51,7 +51,7 @@ $contactModalBtn.on('click', () => {
     $('h5.modal-title').text('Error')
     $('div.modal-body').empty().append(
       $('<p>').text('.'),
-      $('<p>').text('– Brian').addClass('align-right')
+      $('<p>').text('– Brian').addClass('text-right')
     )
     $('div.modal-footer').empty().append((new CloseBtn()).btn)
 

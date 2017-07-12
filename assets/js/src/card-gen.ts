@@ -35,7 +35,7 @@ export class Card {
   
   constructor(title: string, desc: string, url: URLs, img? : string) {
     const $card = img ? this.initimg(title, desc, url, img) : this.init(title, desc, url) 
-    this.div = $('<div>').addClass('col-6').append($card) as JQuery<HTMLDivElement>
+    this.div = $card as JQuery<HTMLDivElement>
   }
 
   private initimg(title: string, desc: string, url:URLs, img: string): JQuery<HTMLDivElement> {

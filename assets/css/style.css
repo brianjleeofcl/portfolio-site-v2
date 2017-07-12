@@ -24,7 +24,11 @@
   display: block;
 }
 
-.LI-profile-badge{
+.LI-profile-badge {
   width: 250px;
   margin: 0 auto;
+}
+
+.card-columns {
+  column-count: 2;
 }
