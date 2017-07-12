@@ -16,6 +16,10 @@
   cursor: pointer;
 }
 
+.btn {
+  cursor: pointer
+}
+
 .loader {
   display: block;
 }

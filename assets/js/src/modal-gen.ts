@@ -1,18 +1,10 @@
-class CloseButton {
-  public btn: JQuery<HTMLButtonElement>;
-  constructor() {
-    const $button = $('<button>').addClass('close').attr({'data-dismiss': 'modal', type: 'button', 'aria-label': 'close'});
-    const $span = $('<span>').html('&times;').prop('aria-hidden', true);
-    this.btn = $button.append($span) as JQuery<HTMLButtonElement>;
-  }
-}
-
+import { CloseIcon } from './close';
 class ModalHeader {
   public div: JQuery<HTMLDivElement>;
   constructor(title: string) {
     const $div = $('<div>').addClass('modal-header');
     const $title = $('<h5>').addClass('modal-title').text(title);
-    const $close = new CloseButton().btn;
+    const $close = new CloseIcon().btn;
     this.div = $div.append($title, $close) as JQuery<HTMLDivElement>;
   }
 }

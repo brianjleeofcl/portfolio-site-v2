@@ -1,3 +1,5 @@
+import { Btn } from './button';
+
 const message = 'message';
 
 class FormGroup {
@@ -28,28 +30,56 @@ class Form {
   }
 }
 
-class SubmitBtn {
-  public btn: JQuery<HTMLElement>;
+class SubmitBtn extends Btn {
+  public btn: JQuery<HTMLButtonElement>;
   constructor(fn: Function) {
-    const $btn = $('<button>').addClass('btn btn-primary mx-auto').attr({type: 'button'}).text('Submit')
-    $btn.on('click', fn as JQuery.EventHandler<any, any>)
-    this.btn = $btn
+    super('Submit')
+    this.btn.on('click', fn as JQuery.EventHandler<any, any>)
+    this.btn.addClass('btn-primary mx-auto').attr({type: 'button'})
   }
+}
+
+interface EventRecord {
+  [event: string]: Array<(...data: any[]) => void>
 }
 
 export class Contact {
   private form: Form;
   public formElement: JQuery<HTMLElement>
   public button: JQuery<HTMLElement>;
+  private eventRecord: EventRecord;
 
   constructor() {
-    this.form = new Form()
-    const $form = $('<form>').append(this.form.name.field, this.form.email.field, this.form.message.field)
-    this.formElement = $form
-    this.button = new SubmitBtn(this.submit).btn
+    this.form = new Form();
+    const $form = $('<form>').append(this.form.name.field, this.form.email.field, this.form.message.field);
+    this.formElement = $form;
+    this.submit = this.submit.bind(this);
+    this.button = new SubmitBtn(this.submit).btn;
+    this.eventRecord = {};
+  }
+
+  public on(event: string, fn: (...data: any[]) => void ) {
+    if (this.eventRecord[event]) this.eventRecord[event].push(fn)
+    else this.eventRecord[event] = [fn]
+  }
+
+  private emit(event: string, ...data: any[]) {
+    for (let fn of this.eventRecord[event]) fn(...data)
   }
 
   private submit(): void {
-    console.log('click!')
+    const data: string = JSON.stringify({
+      name: this.form.name.data,
+      email: this.form.email.data,
+      message: this.form.message.data
+    })
+
+    $.ajax('http://localhost:8000/v1/email/send', { 
+      method: 'POST', 
+      contentType: 'text/plain',
+      data 
+    })
+    .always(() => this.emit('POST_SENT'))
+    .then(() => this.emit('POST_SUCCESS'), () => this.emit('POST_ERROR'))
   }
 }

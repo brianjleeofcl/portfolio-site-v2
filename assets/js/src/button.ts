@@ -6,3 +6,10 @@ export class Button {
     this.btn = $button as JQuery<HTMLButtonElement>
   }
 }
+
+export class Btn extends Button {
+  constructor(text: string) {
+    super(text)
+    this.btn.addClass('btn')
+  }
+}
