@@ -4,13 +4,25 @@
   min-height: 39vw
 }
 
-#medium-iframe {
-  border: 2px solid #292b2c;
+iframe#medium-iframe {
+  border: 1px solid #292b2c;
+  padding: 1px;
   display: block;
   margin: 0 auto;
   max-height: 95vh;
   height: 100%;
+  min-height: 70vh;
   width: 95%;
+}
+
+@media (max-width: 544px) {
+  #projects-container {
+    column-count: 1
+  }
+}
+
+#blog-wrapper {
+  min-height: 110vh;
 }
 
 .contact-modal-loader {

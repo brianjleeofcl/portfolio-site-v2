@@ -42,7 +42,7 @@ $contactModalBtn.on('click', () => {
   .on('POST_SUCCESS', () => {
     $('h5.modal-title').text('Success!')
     $('div.modal-body').empty().append(
-      $('<p>').text('Thanks for the message, I will get back to you shortly.'),
+      $('<p>').text('Thanks for the message! I will get back to you shortly.'),
       $('<p>').text('– Brian').addClass('align-right')
     )
     $('div.modal-footer').empty().append((new CloseBtn()).btn)
@@ -50,8 +50,7 @@ $contactModalBtn.on('click', () => {
   .on('POST_FAILURE', () => {
     $('h5.modal-title').text('Error')
     $('div.modal-body').empty().append(
-      $('<p>').text('.'),
-      $('<p>').text('– Brian').addClass('text-right')
+      $('<p>').text('An error occurred while sending your message. Please try again.')
     )
     $('div.modal-footer').empty().append((new CloseBtn()).btn)
 
